@@ -7,10 +7,12 @@ import { MaterialModule } from '@angular/material';
 import 'hammerjs';
 
 import { AppComponent } from './app.component';
+import { SpreadsComponent } from './spreads/spreads.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SpreadsComponent
   ],
   imports: [
     BrowserModule,

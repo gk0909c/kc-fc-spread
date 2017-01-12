@@ -1,0 +1,14 @@
+<md-toolbar color="primary">
+    <h2>Force.com data spread</h2>
+    <span class="fill-remaining-space"></span>
+    <button md-icon-button md-mini-fab (click)="addTab()"
+      mdTooltip="object" mdTooltipPosition="below">
+      <md-icon class="md-24">add</md-icon>
+    </button>
+</md-toolbar>
+
+<md-tab-group [selectedIndex]="selected" (selectChange)="tabChanged()">
+  <md-tab *ngFor="let tab of tabs" label="{{tab.title}}">
+    {{tab.content}}
+  </md-tab>
+</md-tab-group>
