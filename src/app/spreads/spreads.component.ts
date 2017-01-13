@@ -9,7 +9,7 @@ import { ObjectDialogComponent } from './object-dialog/object-dialog.component';
 })
 export class SpreadsComponent implements OnInit {
   selected: number;
-  tabs: [{}];
+  tabs: [{title: string, content: string}];
   dialogRef: MdDialogRef<ObjectDialogComponent>;
 
   constructor(public dialog: MdDialog) { }

@@ -2,8 +2,7 @@
 Force.com data browser with spread using [handsontable](https://github.com/handsontable/handsontable)
 
 # now
-+ タブを作成して、個別にデータ保持。
-  + タブ追加用にDialogを実装する
++ Sfdc Serviceを仮で作っていく。で、それを呼び出して。。。
 
 # future
 + change favicon
