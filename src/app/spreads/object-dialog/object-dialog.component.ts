@@ -8,10 +8,14 @@ import { MdDialogRef } from '@angular/material';
 })
 export class ObjectDialogComponent {
   selectedObject: String;
+  content: String;
 
   constructor(public dialogRef: MdDialogRef<ObjectDialogComponent>) { }
 
   selectObject() {
-    this.dialogRef.close(this.selectedObject);
+    this.dialogRef.close({
+      selectedObject: this.selectedObject,
+      content: this.content,
+    });
   }
 }

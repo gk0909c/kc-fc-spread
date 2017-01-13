@@ -27,13 +27,15 @@ export class SpreadsComponent implements OnInit {
   }
 
   addTab() {
-    this.tabs.push({title: 'tab2', content: 'additional content'});
     this.dialogRef = this.dialog.open(ObjectDialogComponent, {
       disableClose: false
     });
 
     this.dialogRef.afterClosed().subscribe(result => {
-      console.log('result: ' + result);
+      this.tabs.push({
+        title: result.selectedObject,
+        content: result.content
+      });
       this.dialogRef = null;
     });
   }
