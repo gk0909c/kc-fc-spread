@@ -2,7 +2,7 @@
 Force.com data browser with spread using [handsontable](https://github.com/handsontable/handsontable)
 
 # now
-+ テストも楽になりそうなので、関連するモジュールをまとめる。
++ タブの削除機能追加
 + handsontableを導入する
 
 # future

@@ -4,11 +4,10 @@ import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/t
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { FormsModule } from '@angular/forms';
-import { MaterialModule } from '@angular/material';
 import { SpreadsComponent } from './spreads.component';
 import { ObjectDialogComponent } from './object-dialog/object-dialog.component';
-import { ObjectInfoService } from './object-info.service';
+
+import { SpreadsModule } from './spreads.module';
 
 describe('SpreadsComponent', () => {
   let component: SpreadsComponent;
@@ -16,23 +15,11 @@ describe('SpreadsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        SpreadsComponent,
-        ObjectDialogComponent
-      ],
-      imports: [
-        MaterialModule.forRoot(),
-        FormsModule
-      ],
-      providers: [
-        ObjectInfoService
-      ]
+      imports: [ SpreadsModule ],
     });
     TestBed.overrideModule(BrowserDynamicTestingModule, {
       set: {
-        entryComponents: [
-          ObjectDialogComponent
-        ]
+        entryComponents: [ ObjectDialogComponent ]
       }
     });
     TestBed.overrideComponent(ObjectDialogComponent, {

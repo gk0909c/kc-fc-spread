@@ -22,9 +22,7 @@ export class SpreadsComponent implements OnInit {
     ];
   }
 
-  // tabChanged() {
-  //   console.log('abc');
-  // }
+  tabChanged() { }
 
   addTab() {
     this.dialogRef = this.dialog.open(ObjectDialogComponent, {

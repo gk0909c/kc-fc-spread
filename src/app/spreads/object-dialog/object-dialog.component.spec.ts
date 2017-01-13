@@ -3,10 +3,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { FormsModule } from '@angular/forms';
-import { MaterialModule } from '@angular/material';
 import { MdDialogRef } from '@angular/material';
 
+import { SpreadsModule } from '../spreads.module';
 import { ObjectDialogComponent } from './object-dialog.component';
 import { ObjectInfoService } from '../object-info.service';
 
@@ -28,13 +27,7 @@ describe('ObjectDialogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        ObjectDialogComponent
-      ],
-      imports: [
-        MaterialModule.forRoot(),
-        FormsModule
-      ],
+      imports: [ SpreadsModule ],
       providers: [
         { provide: MdDialogRef, useClass: MdDialogRefStub },
         { provide: ObjectInfoService, useClass: ObjectInfoServiceStub },
