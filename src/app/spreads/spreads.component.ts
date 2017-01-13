@@ -22,20 +22,23 @@ export class SpreadsComponent implements OnInit {
     ];
   }
 
-  tabChanged() {
-    console.log('abc');
-  }
+  // tabChanged() {
+  //   console.log('abc');
+  // }
 
   addTab() {
     this.dialogRef = this.dialog.open(ObjectDialogComponent, {
-      disableClose: false
+      disableClose: true
     });
 
     this.dialogRef.afterClosed().subscribe(result => {
-      this.tabs.push({
-        title: result.selectedObject,
-        content: result.content
-      });
+      if (result) {
+        this.tabs.push({
+          title: result.selectedObject,
+          content: result.content
+        });
+        this.selected = this.tabs.length - 1;
+      }
       this.dialogRef = null;
     });
   }

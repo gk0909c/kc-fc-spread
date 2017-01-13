@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { SpreadsComponent } from './spreads/spreads.component';
 import { ObjectDialogComponent } from './spreads/object-dialog/object-dialog.component';
 
+import { ObjectInfoService } from './spreads/object-info.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +27,9 @@ import { ObjectDialogComponent } from './spreads/object-dialog/object-dialog.com
     MaterialModule.forRoot(),
     HttpModule
   ],
-  providers: [],
+  providers: [
+    ObjectInfoService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

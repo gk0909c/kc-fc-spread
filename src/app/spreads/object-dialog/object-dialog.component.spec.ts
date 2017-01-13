@@ -8,15 +8,23 @@ import { MaterialModule } from '@angular/material';
 import { MdDialogRef } from '@angular/material';
 
 import { ObjectDialogComponent } from './object-dialog.component';
+import { ObjectInfoService } from '../object-info.service';
 
 class MdDialogRefStub {
   close = jasmine.createSpy('close');
+}
+class ObjectInfoServiceStub {
+  getObjectList = jasmine.createSpy('getObjectList').and.returnValue([
+    {name: 'Obj1__c', label: 'Obj1Label'},
+    {name: 'Obj2__c', label: 'Obj2Label'},
+  ]);
 }
 
 describe('ObjectDialogComponent', () => {
   let component: ObjectDialogComponent;
   let fixture: ComponentFixture<ObjectDialogComponent>;
   let dialogStub: MdDialogRefStub;
+  let serviceStub: ObjectInfoServiceStub;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -28,7 +36,8 @@ describe('ObjectDialogComponent', () => {
         FormsModule
       ],
       providers: [
-        { provide: MdDialogRef, useClass: MdDialogRefStub }
+        { provide: MdDialogRef, useClass: MdDialogRefStub },
+        { provide: ObjectInfoService, useClass: ObjectInfoServiceStub },
       ]
     });
     TestBed.compileComponents();
@@ -41,11 +50,22 @@ describe('ObjectDialogComponent', () => {
     dialogStub = fixture.debugElement.injector.get(MdDialogRef);
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('init with object list ', () => {
+    expect(component.objectList.length).toBe(2);
+    assertObject(component.objectList[0], 'Obj1__c', 'Obj1Label');
+    assertObject(component.objectList[1], 'Obj2__c', 'Obj2Label');
   });
   it('select object close dialog', () => {
+    component.selectedObject = 'Selected__c';
     component.selectObject();
-    expect(dialogStub.close).toHaveBeenCalledTimes(1);
+    expect(dialogStub.close).toHaveBeenCalledWith({
+      selectedObject: 'Selected__c',
+      content: 'content of Selected__c',
+    });
   });
+
+  function assertObject(obj, name, label) {
+    expect(obj.name).toBe(name);
+    expect(obj.label).toBe(label);
+  }
 });

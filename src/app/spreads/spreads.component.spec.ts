@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, inject, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { MaterialModule } from '@angular/material';
 import { SpreadsComponent } from './spreads.component';
 import { ObjectDialogComponent } from './object-dialog/object-dialog.component';
+import { ObjectInfoService } from './object-info.service';
 
 describe('SpreadsComponent', () => {
   let component: SpreadsComponent;
@@ -22,6 +23,9 @@ describe('SpreadsComponent', () => {
       imports: [
         MaterialModule.forRoot(),
         FormsModule
+      ],
+      providers: [
+        ObjectInfoService
       ]
     });
     TestBed.overrideModule(BrowserDynamicTestingModule, {
@@ -29,6 +33,11 @@ describe('SpreadsComponent', () => {
         entryComponents: [
           ObjectDialogComponent
         ]
+      }
+    });
+    TestBed.overrideComponent(ObjectDialogComponent, {
+      set: {
+        template: `<span>mock<span>`
       }
     });
     TestBed.compileComponents();
@@ -54,7 +63,9 @@ describe('SpreadsComponent', () => {
     component.addTab();
     component.dialogRef.close({selectedObject: 'a', content: 'b'});
     expect(component.tabs.length).toBe(3);
+    expect(component.selected).toBe(2);
     expect(component.tabs[2].title).toBe('a');
     expect(component.tabs[2].content).toBe('b');
+    expect(component.dialogRef).toBeNull();
   });
 });

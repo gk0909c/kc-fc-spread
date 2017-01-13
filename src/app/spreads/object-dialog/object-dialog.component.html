@@ -1,9 +1,16 @@
-<h1 md-dialog-title>Select Object</h1>
+<div class="object-dialog">
+  <h1 md-dialog-title>Select Object</h1>
 
-<input [(ngModel)]="selectedObject" />
-<input [(ngModel)]="content" />
+  <md-dialog-content class="object-dialog-content">
+    <md-select placeholder="select object" [(ngModel)]="selectedObject" class="object-select">
+      <md-option *ngFor="let obj of objectList" [value]="obj.name">
+        {{ obj.name }} - {{ obj.label }}
+      </md-option>
+    </md-select>
+  </md-dialog-content>
 
-<md-dialog-actions>
-  <button (click)="selectObject()">Select</button>
-  <button md-dialog-close>No</button>
-</md-dialog-actions>
+  <md-dialog-actions>
+    <button md-raised-button color="primary" (click)="selectObject()">Select</button>
+    <button md-raised-button md-dialog-close>Cancel</button>
+  </md-dialog-actions>
+</div>
