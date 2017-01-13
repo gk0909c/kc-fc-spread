@@ -8,11 +8,16 @@ import 'hammerjs';
 
 import { AppComponent } from './app.component';
 import { SpreadsComponent } from './spreads/spreads.component';
+import { ObjectDialogComponent } from './spreads/object-dialog/object-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SpreadsComponent
+    SpreadsComponent,
+    ObjectDialogComponent
+  ],
+  entryComponents: [
+    ObjectDialogComponent
   ],
   imports: [
     BrowserModule,

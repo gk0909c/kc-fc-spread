@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MdDialog, MdDialogRef } from '@angular/material';
+import { ObjectDialogComponent } from './object-dialog/object-dialog.component';
 
 @Component({
   selector: 'spreads',
@@ -8,8 +10,9 @@ import { Component, OnInit } from '@angular/core';
 export class SpreadsComponent implements OnInit {
   selected: number;
   tabs: [{}];
+  dialogRef: MdDialogRef<ObjectDialogComponent>;
 
-  constructor() { }
+  constructor(public dialog: MdDialog) { }
 
   ngOnInit() {
     this.selected = 0;
@@ -25,5 +28,13 @@ export class SpreadsComponent implements OnInit {
 
   addTab() {
     this.tabs.push({title: 'tab2', content: 'additional content'});
+    this.dialogRef = this.dialog.open(ObjectDialogComponent, {
+      disableClose: false
+    });
+
+    this.dialogRef.afterClosed().subscribe(result => {
+      console.log('result: ' + result);
+      this.dialogRef = null;
+    });
   }
 }
