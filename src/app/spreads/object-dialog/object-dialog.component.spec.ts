@@ -1,6 +1,5 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
@@ -10,12 +9,14 @@ import { MdDialogRef } from '@angular/material';
 
 import { ObjectDialogComponent } from './object-dialog.component';
 
+class MdDialogRefStub {
+  close = jasmine.createSpy('close');
+}
+
 describe('ObjectDialogComponent', () => {
   let component: ObjectDialogComponent;
   let fixture: ComponentFixture<ObjectDialogComponent>;
-  let dialogRefStub = {
-    close: () => { }
-  };
+  let dialogStub: MdDialogRefStub;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -27,7 +28,7 @@ describe('ObjectDialogComponent', () => {
         FormsModule
       ],
       providers: [
-        { provide: MdDialogRef, usevalue: dialogRefStub }
+        { provide: MdDialogRef, useClass: MdDialogRefStub }
       ]
     });
     TestBed.compileComponents();
@@ -37,9 +38,14 @@ describe('ObjectDialogComponent', () => {
     fixture = TestBed.createComponent(ObjectDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    dialogStub = fixture.debugElement.injector.get(MdDialogRef);
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+  it('select object close dialog', () => {
+    component.selectObject();
+    expect(dialogStub.close).toHaveBeenCalledTimes(1);
   });
 });
