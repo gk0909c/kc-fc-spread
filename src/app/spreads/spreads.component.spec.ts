@@ -55,4 +55,9 @@ describe('SpreadsComponent', () => {
     expect(component.tabs[2].content).toBe('b');
     expect(component.dialogRef).toBeNull();
   });
+
+  it ('tab close', () => {
+    component.closeTab(0);
+    expect(component.tabs.length).toBe(1);
+  });
 });

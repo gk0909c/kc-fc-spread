@@ -17,12 +17,14 @@ export class SpreadsComponent implements OnInit {
   ngOnInit() {
     this.selected = 0;
     this.tabs = [
-      {title: 'tab1', content: 'content1'},
-      {title: 'tabs', content: 'contents'},
+      {title: 'first__c', content: 'content1'},
+      {title: 'second__c', content: 'content2'},
     ];
   }
 
-  tabChanged() { }
+  tabChanged() {
+    console.log('changing');
+  }
 
   addTab() {
     this.dialogRef = this.dialog.open(ObjectDialogComponent, {
@@ -39,5 +41,9 @@ export class SpreadsComponent implements OnInit {
       }
       this.dialogRef = null;
     });
+  }
+
+  closeTab(idx) {
+    this.tabs.splice(idx, 1);
   }
 }
