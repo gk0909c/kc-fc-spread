@@ -7,6 +7,7 @@
     </button>
 </md-toolbar>
 
+
 <md-tab-group [selectedIndex]="selected" (selectChange)="tabChanged()">
   <md-tab *ngFor="let tab of tabs; let i = index;">
     <template md-tab-label>
@@ -15,6 +16,6 @@
       </button>
       {{tab.title}}
     </template>
-    {{tab.content}}
+    <div handson-spread myStr="{{tab.content}}"></div>
   </md-tab>
 </md-tab-group>

@@ -5,13 +5,15 @@ import { MaterialModule } from '@angular/material';
 
 import { SpreadsComponent } from './spreads.component';
 import { ObjectDialogComponent } from './object-dialog/object-dialog.component';
+import { SpreadDirective } from './spread.directive';
 
 import { ObjectInfoService } from './object-info.service';
 
 @NgModule({
   declarations: [
     SpreadsComponent,
-    ObjectDialogComponent
+    ObjectDialogComponent,
+    SpreadDirective,
   ],
   entryComponents: [
     ObjectDialogComponent

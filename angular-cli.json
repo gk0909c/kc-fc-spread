@@ -18,9 +18,14 @@
       "prefix": "app",
       "mobile": false,
       "styles": [
-        "styles.scss"
+        "styles.scss",
+        "../node_modules/handsontable/dist/handsontable.full.min.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/handsontable/dist/handsontable.full.min.js",
+        "../node_modules/pikaday/pikaday.js",
+        "../node_modules/zeroclipboard/dist/ZeroClipboard.Core.min.js"
+      ],
       "environments": {
         "source": "environments/environment.ts",
         "dev": "environments/environment.ts",

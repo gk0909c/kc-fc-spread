@@ -7,7 +7,6 @@ import 'hammerjs';
 import { AppComponent } from './app.component';
 import { SpreadsModule } from './spreads/spreads.module';
 
-
 @NgModule({
   declarations: [
     AppComponent,
