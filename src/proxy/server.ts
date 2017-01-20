@@ -7,7 +7,7 @@ namespace express_web_api {
 
   app.get('/', (req: Request, resp: Response) => {
     proxyToSfdc();
-    resp.send('Hello Express!!\n');
+    resp.send('{"msg": "Hello Express!!"}');
   });
 
   app.listen(port, () => console.log(`Express app listening on port ${port}`));

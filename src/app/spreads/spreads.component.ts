@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MdDialog, MdDialogRef } from '@angular/material';
 import { ObjectDialogComponent } from './object-dialog/object-dialog.component';
+import { ObjectInfoService } from './object-info.service';
 
 @Component({
   selector: 'spreads',
@@ -12,7 +13,8 @@ export class SpreadsComponent implements OnInit {
   tabs: [{title: string, content: string}];
   dialogRef: MdDialogRef<ObjectDialogComponent>;
 
-  constructor(public dialog: MdDialog) { }
+  constructor(public dialog: MdDialog,
+              private objInfoService: ObjectInfoService) { }
 
   ngOnInit() {
     this.selected = 0;
@@ -41,6 +43,14 @@ export class SpreadsComponent implements OnInit {
       }
       this.dialogRef = null;
     });
+  }
+
+  getData() {
+    this.objInfoService.getData()
+      .subscribe(res => {
+        console.log('in component');
+        console.log(res);
+      });
   }
 
   closeTab(idx) {
