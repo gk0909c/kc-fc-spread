@@ -2,6 +2,7 @@
 
 # compiled output
 /dist
+/dist-proxy
 /tmp
 
 # dependencies
